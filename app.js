@@ -41,23 +41,32 @@ const addPhraseSection = document.getElementById('add-phrase-section');
 const phraseInput = addPhraseSection.querySelector('input');
 // *** Select the button from the add phrase section
 // const phraseButton = ?;
+const phraseButton = addPhraseSection.querySelector('button');
+
+
 
 function handleAddPhrase() {
-    // *** add the current phrase value to the character phrases
 
+    // *** add the current phrase value to the character phrases
+    character.phrases.push(phraseInput.value);
     displayPhrases();
     phraseInput.value = '';
     phraseInput.focus();
-    // character.phrases.push();
 }
 
 // *** Add a click handler to the phrase button that calls handleAddPhrase
+
 
 phraseInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
         handleAddPhrase();
     }
 });
+
+phraseButton.addEventListener('click', () => {
+    handleAddPhrase();
+});
+
 
 // Character
 const characterSection = document.getElementById('character-section');
@@ -81,6 +90,12 @@ const phraseList = phrasesSection.querySelector('ul');
 
 function displayPhrases() {
     phraseList.innerHTML = '';
+
+    for (const phrase of character.phrases) {
+        const li = document.createElement('li');
+        li.textContent = phrase;
+        phraseList.append(li);
+    }
 
     // ** Create an li for each phrase and append to the list
 }
