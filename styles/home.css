@@ -1,0 +1,119 @@
+main {
+    display: grid;
+    grid-template-rows: max-content min-content 1fr;
+    grid-template-columns: 50% 50%;
+    grid-template-areas:
+        'design design'
+        'add-phrase add-phrase'
+        'character phrases'
+    ;
+    grid-gap: 10px 0;
+    min-height: 0;
+}
+
+@media (min-width: 550px) {
+    main {
+        grid-template-rows: max-content 1fr;
+        grid-template-areas:
+            'design add-phrase'
+            'character phrases'
+        ;
+    }
+}
+
+@media (min-width: 900px) {
+    main {
+        grid-template-columns: 250px 1fr 1fr;
+        grid-template-areas:
+            'design character phrases'
+            'add-phrase character phrases'
+        ;
+    }
+}
+
+
+section {
+    padding: 10px 0 10px 20px;
+}
+
+.controls {
+    width: 250px;
+}
+
+#design-section {   
+    grid-area: design; 
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    grid-template-rows: repeat(3, 25px);
+    grid-gap: 10px 15px;
+}
+
+#design-section label {
+    display: contents;
+}
+
+#add-phrase-section {
+    grid-area: add-phrase;
+    width: 250px;
+    display: grid;
+    grid-gap: 5px 0;
+    grid-template-rows: repeat(3, 25px);
+}
+
+button {
+    border: 1px solid rgb(78, 92, 198);
+    background: rgb(224, 234, 247);
+}
+
+#character-section {
+    grid-area: character;
+    min-height: 0;
+    min-width: 0;
+    height: 100%;
+}
+
+.character-parts {
+    display: grid;
+    grid-template-rows: 25% 35% 40%;
+    height: 100%;
+    min-height: 0;
+}
+
+.character-parts img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+#phrases-section {
+    grid-area: phrases;
+}
+
+.chat-bubbles {
+    padding-right: 20px;
+    overflow-y: auto;
+}
+
+.chat-bubbles li {
+    position: relative;
+    background: #00aabb;
+    color: white;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0 10px 20px;
+}
+
+.chat-bubbles li:after {
+    content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-right-color: #00aabb;
+	border-left: 0;
+	border-bottom: 0;
+	margin-top: -10px;
+	margin-left: -20px;
+}
